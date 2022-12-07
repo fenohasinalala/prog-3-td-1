@@ -10,7 +10,7 @@ public class BookRestMapper {
         return BookResponse.builder()
                 .id(domain.getId())
                 .title(domain.getTitle())
-                .author(domain.getAuthor())
+                .authors_id(domain.getAuthorBook().stream().map(authorBook->authorBook.getAuthor().getId()).toList())
                 .hasAuthor(domain.hasAuthor())
                 .build();
     }

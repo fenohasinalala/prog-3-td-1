@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 /*@JsonPropertyOrder({
         BookResponse.JSON_PROPERTY_ID,
@@ -23,7 +24,7 @@ import java.io.Serializable;
 @Setter
 public class BookResponse {
     private Long id;
-    private String author;
+    private List<Long> authors_id;
     private String title;;
     private boolean hasAuthor;
 }

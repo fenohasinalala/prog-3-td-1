@@ -2,10 +2,13 @@ package app.prog.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -16,10 +19,11 @@ public class Book {
     @Id
     private Long id;
     private String title;
-    private String author;
+    @OneToMany(mappedBy = "book")
+    private List<AuthorBook> authorBook;
 
     public boolean hasAuthor() {
-        return author != null;
+        return authorBook != null;
     }
 
 }
