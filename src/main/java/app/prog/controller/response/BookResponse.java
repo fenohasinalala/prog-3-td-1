@@ -1,17 +1,29 @@
 package app.prog.controller.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.*;
 
 import java.io.Serializable;
+
+/*@JsonPropertyOrder({
+        BookResponse.JSON_PROPERTY_ID,
+        BookResponse.JSON_PROPERTY_AUTHOR,
+        BookResponse.JSON_PROPERTY_TITLE,
+        BookResponse.JSON_PROPERTY_HASAUTHOR
+})
+
+ */
+
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Getter
+@Setter
 public class BookResponse {
     private Long id;
     private String author;
-    private String title;
+    private String title;;
     private boolean hasAuthor;
 }

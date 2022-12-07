@@ -2,6 +2,7 @@ package app.prog.controller;
 
 import app.prog.controller.mapper.BookRestMapper;
 import app.prog.controller.response.BookResponse;
+import app.prog.model.Book;
 import app.prog.service.BookService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
