@@ -20,11 +20,8 @@ public class Book {
     TODO-4-b: Should I map it with int ? Fix it if there is a problem
      */
     @Id
-    /*@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", unique=true, nullable=false)
-
-     */
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String title;
     private String author;
     private Integer pageNumber;
