@@ -1,9 +1,6 @@
 package app.prog.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -23,7 +20,10 @@ public class Book {
     TODO-4-b: Should I map it with int ? Fix it if there is a problem
      */
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    /*@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id", unique=true, nullable=false)
+
+     */
     private Integer id;
     private String title;
     private String author;
