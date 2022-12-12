@@ -13,24 +13,24 @@ public class GlobalExceptionHandler {
 
 	// handling specific exception
 	@ExceptionHandler(NotFoundException.class)
-	public ResponseEntity<?> NotFoundExceptionHandling(NotFoundException exception, WebRequest request){
-		ErrorDetails errorDetails = 
-				new ErrorDetails(new Date(), exception.getMessage(), request.getDescription(false));
-		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+	public ResponseEntity<ErrorDetailsFormat> NotFoundExceptionHandling(NotFoundException exception, WebRequest request){
+		ErrorDetailsFormat errorDetailsFormat =
+				new ErrorDetailsFormat(new Date(), exception.getMessage(), request.getDescription(false));
+		return new ResponseEntity<>(errorDetailsFormat, HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler(BadRequestException.class)
-	public ResponseEntity<?> BadRequestExceptionHandling(BadRequestException exception, WebRequest request){
-		ErrorDetails errorDetails =
-				new ErrorDetails(new Date(), exception.getMessage(), request.getDescription(false));
-		return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+	public ResponseEntity<ErrorDetailsFormat> BadRequestExceptionHandling(BadRequestException exception, WebRequest request){
+		ErrorDetailsFormat errorDetailsFormat =
+				new ErrorDetailsFormat(new Date(), exception.getMessage(), request.getDescription(false));
+		return new ResponseEntity<>(errorDetailsFormat, HttpStatus.BAD_REQUEST);
 	}
 
 	// handling global exception
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity<?> GlobalExceptionHandling(Exception exception, WebRequest request){
-		ErrorDetails errorDetails = 
-				new ErrorDetails(new Date(), exception.getMessage(), request.getDescription(false));
-		return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+	public ResponseEntity<ErrorDetailsFormat> GlobalExceptionHandling(Exception exception, WebRequest request){
+		ErrorDetailsFormat errorDetailsFormat =
+				new ErrorDetailsFormat(new Date(), exception.getMessage(), request.getDescription(false));
+		return new ResponseEntity<>(errorDetailsFormat, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }
