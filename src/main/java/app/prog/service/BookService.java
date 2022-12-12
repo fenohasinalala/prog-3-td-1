@@ -1,10 +1,13 @@
 package app.prog.service;
 
+import app.prog.exception.NotFoundException;
 import app.prog.model.BookEntity;
+import app.prog.model.CategoryEntity;
 import app.prog.repository.BookRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,9 +39,20 @@ public class BookService {
         T is the type of the value, for example : here the class type is BookEntity
          */
         Optional<BookEntity> optional = repository.findById(id);
+        BookEntity toDelete;
+        List<CategoryEntity> categories = new ArrayList<>();
         if (optional.isPresent()) {
+            for (CategoryEntity c:optional.get().getCategories()) {
+                categories.add(c);
+            }
+            toDelete = BookEntity.builder()
+                    .id(optional.get().getId())
+                    .title(optional.get().getTitle())
+                    .author(optional.get().getAuthor())
+                    .categories(categories)
+                    .build();
             repository.delete(optional.get());
-            return optional.get();
+            return toDelete;
         } else {
         /*
         TODO-5 : The exception appears as an internal server error, status 500.
@@ -48,7 +62,7 @@ public class BookService {
         Link 1 : https://www.baeldung.com/spring-response-entity
         Link 2 : https://www.baeldung.com/exception-handling-for-rest-with-spring
          */
-            throw new RuntimeException("BookEntity." + id + " not found");
+            throw new NotFoundException("BookEntity." + id + " not found");
         }
     }
 }
