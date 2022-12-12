@@ -6,6 +6,8 @@ import app.prog.model.AuthorEntity;
 import app.prog.model.BookEntity;
 import app.prog.service.AuthorService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,13 +26,14 @@ public class AuthorController {
     }
 
     @PostMapping("/authors")
-    public List<AuthorResponse> createBooks(@RequestBody List<CreateAuthorResponse> toCreate) {
+    public ResponseEntity<List<AuthorResponse>> createBooks(@RequestBody List<CreateAuthorResponse> toCreate) {
         List<AuthorEntity> domain = toCreate.stream()
                 .map(mapper::toDomain)
                 .toList();
-        return service.createAuthors(domain).stream()
+        List<AuthorResponse> response = service.createAuthors(domain).stream()
                 .map(mapper::toRest)
                 .toList();
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PutMapping("/authors")
