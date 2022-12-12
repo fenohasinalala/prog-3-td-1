@@ -1,14 +1,21 @@
 package app.prog.controller;
 
 import app.prog.controller.mapper.AuthorRestMapper;
-import app.prog.controller.response.*;
+import app.prog.controller.response.AuthorResponse;
+import app.prog.controller.response.CreateAuthorResponse;
+import app.prog.controller.response.UpdateAuthorResponse;
 import app.prog.model.AuthorEntity;
-import app.prog.model.BookEntity;
 import app.prog.service.AuthorService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 

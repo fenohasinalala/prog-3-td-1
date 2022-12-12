@@ -9,27 +9,24 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
+import lombok.ToString;
 
 @Entity
-@Table(name = "author")
+@Table(name = "category")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthorEntity {
+@EqualsAndHashCode
+@ToString
+public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(unique = true)
     private String name;
-    private String particularity;
-    private LocalDate birthDate;
-
-    public boolean hasParticularity() {
-        return particularity != null;
-    }
 
 }
